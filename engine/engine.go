@@ -1,9 +1,7 @@
 package engine
 
 import (
-	"01.kood.tech/git/jsaar/go-reloaded/ascii-art/shadow"
 	"01.kood.tech/git/jsaar/go-reloaded/ascii-art/standard"
-	"01.kood.tech/git/jsaar/go-reloaded/ascii-art/thinkertoy"
 	"fmt"
 	"os"
 )
@@ -19,11 +17,11 @@ func Start() {
 			userTrigger = os.Args[2]
 		}
 		if userTrigger == "shadow" {
-			shadow.Shadow(userInput)
+			fmt.Println("TODO")
 		} else if userTrigger == "standard" {
 			standard.Standard(userInput)
 		} else if userTrigger == "thinkertoy" {
-			thinkertoy.ThinkerToy(userInput)
+			fmt.Println("TODO")
 		}
 	} else {
 		fmt.Println("Please enter an argument with or without a font trigger")
