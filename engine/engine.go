@@ -11,7 +11,7 @@ import (
 func Start() {
 	var userInput string
 	var userTrigger string
-	if len(os.Args) > 2 && len(os.Args) < 4 {
+	if len(os.Args) > 1 && len(os.Args) < 4 {
 		userInput = os.Args[1]
 		if len(os.Args) == 2 {
 			userTrigger = "standard"
@@ -23,7 +23,7 @@ func Start() {
 		} else if userTrigger == "standard" {
 			standard.Standard(userInput)
 		} else if userTrigger == "thinkertoy" {
-			thinkertoy.Thinkertoy(userInput)
+			thinkertoy.ThinkerToy(userInput)
 		}
 	} else {
 		fmt.Println("Please enter an argument with or without a font trigger")

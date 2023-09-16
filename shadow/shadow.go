@@ -3,8 +3,8 @@ package shadow
 import (
 	"fmt"
 	"os"
-	"strings"
 	"os/exec"
+	"strings"
 )
 
 var shadowDictionary = map[string]int{
@@ -73,7 +73,7 @@ var shadowDictionary = map[string]int{
 	"^":  559,
 	"_":  568,
 	"`":  577,
-	"a":  587,
+	"a":  586,
 	"b":  595,
 	"c":  604,
 	"d":  613,
@@ -105,18 +105,6 @@ var shadowDictionary = map[string]int{
 	"~":  847,
 }
 
-var OutputMap = map[int]string{
-	1: "",
-	2: "",
-	3: "",
-	4: "",
-	5: "",
-	6: "",
-	7: "",
-	8: "",
-	9: "",
-}
-
 func Shadow(input string) {
 	// fmt.Println(input, "SHADOW")
 	cmd := exec.Command("clear") //Linux example, its tested
@@ -128,14 +116,35 @@ func Shadow(input string) {
 	}
 	shadowLetters := strings.Split(string(fileStream), "\n")
 
-	for i := 0; i < len(input); i++ {
-		fmt.Println(shadowDictionary[string(input[i])])
-		for j := 1; j < 8; j++ {
-			OutputMap[j] += shadowLetters[shadowDictionary[string(input[i])]+j]
-		}
-	}
+	outputRow1 := ""
+	outputRow2 := ""
+	outputRow3 := ""
+	outputRow4 := ""
+	outputRow5 := ""
+	outputRow6 := ""
+	outputRow7 := ""
+	outputRow8 := ""
 
-	for _, value := range OutputMap {
-		fmt.Println("X", value)
+	fmt.Println(input)
+
+	for i := 0; i < len(input); i++ {
+		outputRow1 += shadowLetters[shadowDictionary[string(input[i])]+0]
+		outputRow2 += shadowLetters[shadowDictionary[string(input[i])]+1]
+		outputRow3 += shadowLetters[shadowDictionary[string(input[i])]+2]
+		outputRow4 += shadowLetters[shadowDictionary[string(input[i])]+3]
+		outputRow5 += shadowLetters[shadowDictionary[string(input[i])]+4]
+		outputRow6 += shadowLetters[shadowDictionary[string(input[i])]+5]
+		outputRow7 += shadowLetters[shadowDictionary[string(input[i])]+6]
+		outputRow8 += shadowLetters[shadowDictionary[string(input[i])]+7]
 	}
+	
+	fmt.Println()
+	fmt.Println(outputRow1)
+	fmt.Println(outputRow2)
+	fmt.Println(outputRow3)
+	fmt.Println(outputRow4)
+	fmt.Println(outputRow5)
+	fmt.Println(outputRow6)
+	fmt.Println(outputRow7)
+	fmt.Println(outputRow8)
 }

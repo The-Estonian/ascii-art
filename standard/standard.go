@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-var shadowDictionary = map[string]int{
+var standardDictionary = map[string]int{
 	" ":  1,
 	"!":  10,
 	"\"": 19,
@@ -73,7 +73,7 @@ var shadowDictionary = map[string]int{
 	"^":  559,
 	"_":  568,
 	"`":  577,
-	"a":  587,
+	"a":  586,
 	"b":  595,
 	"c":  604,
 	"d":  613,
@@ -105,28 +105,9 @@ var shadowDictionary = map[string]int{
 	"~":  847,
 }
 
-var OutputMap = map[int]string{
-	1: "",
-	2: "",
-	3: "",
-	4: "",
-	5: "",
-	6: "",
-	7: "",
-	8: "",
-}
-
 func Standard(input string) {
-	fmt.Println(OutputMap[1])
-	fmt.Println(OutputMap[2])
-	fmt.Println(OutputMap[3])
-	fmt.Println(OutputMap[4])
-	fmt.Println(OutputMap[5])
-	fmt.Println(OutputMap[6])
-	fmt.Println(OutputMap[7])
-	fmt.Println(OutputMap[8])
-	fmt.Println(input, "STANDARD")
-	cmd := exec.Command("clear") //Linux example, its tested
+	// fmt.Println(input, "STANDARD")
+	cmd := exec.Command("clear")
 	cmd.Stdout = os.Stdout
 	cmd.Run()
 	fileStream, err := os.ReadFile("standard/standard.txt")
@@ -135,14 +116,33 @@ func Standard(input string) {
 	}
 	standardLetters := strings.Split(string(fileStream), "\n")
 
+	outputRow1 := ""
+	outputRow2 := ""
+	outputRow3 := ""
+	outputRow4 := ""
+	outputRow5 := ""
+	outputRow6 := ""
+	outputRow7 := ""
+	outputRow8 := ""
+
 	for i := 0; i < len(input); i++ {
-		fmt.Println(shadowDictionary[string(input[i])])
-		for j := 1; j < 9; j++ {
-			OutputMap[j] = OutputMap[j] + " " + standardLetters[shadowDictionary[string(input[i])]+j]
-		}
+		outputRow1 += standardLetters[standardDictionary[string(input[i])]+0]
+		outputRow2 += standardLetters[standardDictionary[string(input[i])]+1]
+		outputRow3 += standardLetters[standardDictionary[string(input[i])]+2]
+		outputRow4 += standardLetters[standardDictionary[string(input[i])]+3]
+		outputRow5 += standardLetters[standardDictionary[string(input[i])]+4]
+		outputRow6 += standardLetters[standardDictionary[string(input[i])]+5]
+		outputRow7 += standardLetters[standardDictionary[string(input[i])]+6]
+		outputRow8 += standardLetters[standardDictionary[string(input[i])]+7]
 	}
 
-	for _, value := range OutputMap {
-		fmt.Println("X", value)
-	}
+	fmt.Println()
+	fmt.Println(outputRow1)
+	fmt.Println(outputRow2)
+	fmt.Println(outputRow3)
+	fmt.Println(outputRow4)
+	fmt.Println(outputRow5)
+	fmt.Println(outputRow6)
+	fmt.Println(outputRow7)
+	fmt.Println(outputRow8)
 }
