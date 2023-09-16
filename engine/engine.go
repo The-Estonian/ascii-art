@@ -1,9 +1,11 @@
 package engine
 
 import (
-	"01.kood.tech/git/jsaar/go-reloaded/ascii-art/standard"
 	"fmt"
 	"os"
+	"strings"
+
+	"01.kood.tech/git/jsaar/go-reloaded/ascii-art/standard"
 )
 
 func Start() {
@@ -19,12 +21,30 @@ func Start() {
 		if userTrigger == "shadow" {
 			fmt.Println("TODO")
 		} else if userTrigger == "standard" {
-			standard.Standard(userInput)
+			if containsNewLine(userInput) {
+				lines := strings.Split(userInput, "\\n")
+				for _, line := range lines {
+					if line != "\\n" {
+						standard.Standard(line)
+					}
+				}
+			} else {
+				standard.Standard(userInput)
+			}
+
 		} else if userTrigger == "thinkertoy" {
 			fmt.Println("TODO")
 		}
 	} else {
 		fmt.Println("Please enter an argument with or without a font trigger")
 		return
+	}
+}
+
+func containsNewLine(s string) bool {
+	if strings.Contains(s, "\\n") {
+		return true
+	} else {
+		return false
 	}
 }

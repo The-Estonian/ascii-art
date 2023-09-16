@@ -109,7 +109,7 @@ func Standard(input string) {
 	// fmt.Println(input, "STANDARD")
 	cmd := exec.Command("clear")
 	cmd.Stdout = os.Stdout
-	cmd.Run()
+	// cmd.Run()
 	fileStream, err := os.ReadFile("standard/standard.txt")
 	if err != nil {
 		fmt.Println(err)
@@ -136,7 +136,6 @@ func Standard(input string) {
 		outputRow8 += standardLetters[standardDictionary[string(input[i])]+7]
 	}
 
-	fmt.Println()
 	fmt.Println(outputRow1)
 	fmt.Println(outputRow2)
 	fmt.Println(outputRow3)
